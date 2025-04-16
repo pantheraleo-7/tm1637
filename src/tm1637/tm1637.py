@@ -158,10 +158,9 @@ class TM1637:
     def scroll(self, string, delay=0.25):
         """Scroll a string across the display with the specified delay,
         given in seconds, between each step (default: 0.25)."""
-        segments = self.encode_string(string)
-        data = [0]*4 + list(segments) + [0]*4
-        for i in range(len(data) - (4 - 1)):  # stop at right padding
-            self.write(data[i : i + 4])
+        segments = b"\x00" * 4 + self.encode_string(string) + b"\x00" * 4
+        for i in range(len(segments) - (4 - 1)):  # stop at right padding
+            self.write(segments[i : i + 4])
             time.sleep(delay)
 
     def hex(self, val):
