@@ -15,7 +15,7 @@ TM1637_DSP_ON = 0x08  # 0x08 display on
 TM1637_MSB = 0x80  # MSB is the decimal point or colon depending on the display
 
 # 0-9, A-z, whitespace, hyphen, asterisk
-_SEGMENTS = bytearray(
+_SEGMENTS = (
     b"\x3F\x06\x5B\x4F\x66\x6D\x7D\x07\x7F\x6F\x77\x7C\x39"
     b"\x5E\x79\x71\x3D\x76\x06\x1E\x76\x38\x55\x54\x3F\x73"
     b"\x67\x50\x6D\x78\x3E\x1C\x2A\x76\x6E\x5B\x00\x40\x63"
