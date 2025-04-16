@@ -128,8 +128,8 @@ class TM1637:
         """Convert a string containing 0-9, A-z, whitespace, hyphen or asterisk
         to an array of segments, matching the length of the source string."""
         segments = bytearray(len(string))
-        for i in range(len(string)):
-            segments[i] = TM1637.encode_char(string[i])
+        for i, char in enumerate(string):
+            segments[i] = TM1637.encode_char(char)
         return segments
 
     def write(self, segments, pos=0):
@@ -227,11 +227,11 @@ class TM1637Decimal(TM1637):
         Convert a string containing 0-9, A-z, whitespace, hyphen, asterisk or period
         to an array of segments, matching the length of the source string."""
         segments = bytearray(len(string.replace(".", "")))  # remove decimal point(s)
-        j = 0
-        for i in range(len(string)):
-            if string[i] == "." and j > 0:
-                segments[j - 1] |= TM1637_MSB
+        i = 0
+        for char in string:
+            if char == "." and i > 0:
+                segments[i - 1] |= TM1637_MSB
                 continue
-            segments[j] = TM1637.encode_char(string[i])
-            j += 1
+            segments[i] = TM1637.encode_char(char)
+            i += 1
         return segments
