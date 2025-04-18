@@ -151,7 +151,7 @@ class TM1637:
         Optionally display a separator (default: False)."""
         string = "{:4s}".format(string)[:4]
         segments = self.encode_string(string)
-        if sep and len(segments) > 1:
+        if sep:
             segments[1] |= TM1637_MSB
         self.write(segments)
 
