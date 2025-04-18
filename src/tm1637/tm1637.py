@@ -226,11 +226,14 @@ class TM1637Decimal(TM1637):
         Convert a string containing 0-9, A-z, whitespace, hyphen, asterisk or period
         to an array of segments, matching the length of the source string."""
         segments = bytearray(len(string.replace(".", "")))  # remove decimal point(s)
+        prev_char_period = True
         i = 0
         for char in string:
-            if char == "." and i > 0:
+            if char == "." and not prev_char_period:
                 segments[i - 1] |= TM1637_MSB
-                continue
-            segments[i] = TM1637.encode_char(char)
-            i += 1
+                prev_char_period = True
+            else:
+                segments[i] = TM1637.encode_char(char)
+                prev_char_period = False
+                i += 1
         return segments
