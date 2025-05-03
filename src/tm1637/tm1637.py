@@ -148,10 +148,10 @@ class TM1637:
         self._stop()
         self._write_dsp_ctrl()
 
-    def show(self, string, sep=False):
+    def show(self, string, sep=False, fill=" "):
         """Display a string up to 4 characters long, left aligned.
         Optionally display a separator (default: False)."""
-        string = "{:4s}".format(string)[:4]
+        string = "{:{}<4s}".format(string, fill)[:4]
         segments = self.encode_string(string)
         if sep:
             segments[1] |= TM1637_MSB
@@ -171,19 +171,19 @@ class TM1637:
         segments = self.encode_string(string)
         self.write(segments)
 
-    def number(self, num):
+    def number(self, num, zero_pad=True):
         """Display an integer value -999 through 9999, left zero padded."""
         num = max(-999, min(num, 9999))
-        string = "{:04d}".format(num)
+        string = "{:{}4d}".format(num, "0"*zero_pad)
         segments = self.encode_string(string)
         self.write(segments)
 
-    def numbers(self, num1, num2, sep=True):
+    def numbers(self, num1, num2, sep=True, zero_pad=True):
         """Display two integer values -9 through 99, left zero padded.
         Optionally display a separator (default: True)."""
         num1 = max(-9, min(num1, 99))
         num2 = max(-9, min(num2, 99))
-        string = "{:02d}{:02d}".format(num1, num2)
+        string = "{0:{2}2d}{1:{2}2d}".format(num1, num2, "0"*zero_pad)
         segments = self.encode_string(string)
         if sep:
             segments[1] |= TM1637_MSB
