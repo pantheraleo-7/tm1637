@@ -149,8 +149,9 @@ class TM1637:
         self._write_dsp_ctrl()
 
     def show(self, string, sep=False, fill=" "):
-        """Display a string up to 4 characters long, left aligned.
-        Optionally display a separator (default: False)."""
+        """Display a string up to 4 characters long, left-aligned
+        and padded with the given fill character (default: space).
+        Optionally toggle the display's separator (default: False)."""
         string = "{:{}<4s}".format(string, fill)[:4]
         segments = self.encode_string(string)
         if sep:
@@ -166,21 +167,24 @@ class TM1637:
             time.sleep(delay)
 
     def hex(self, val):
-        """Display a hex value 0x0000 through 0xffff, right aligned."""
+        """Display a hex value 0x0000 through 0xffff, right-aligned
+        with zero-padding."""
         string = "{:04x}".format(val & 0xffff)
         segments = self.encode_string(string)
         self.write(segments)
 
     def number(self, num, zero_pad=True):
-        """Display an integer value -999 through 9999, left zero padded."""
+        """Display an integer value -999 through 9999, right-aligned
+        with optional zero-padding (default: True)."""
         num = max(-999, min(num, 9999))
         string = "{:{}4d}".format(num, "0"*zero_pad)
         segments = self.encode_string(string)
         self.write(segments)
 
     def numbers(self, num1, num2, sep=True, zero_pad=True):
-        """Display two integer values -9 through 99, left zero padded.
-        Optionally display a separator (default: True)."""
+        """Display two integer values -9 through 99, right-aligned
+        with optional zero-padding (default: True).
+        Optionally toggle the display's separator (default: True)."""
         num1 = max(-9, min(num1, 99))
         num2 = max(-9, min(num2, 99))
         string = "{0:{2}2d}{1:{2}2d}".format(num1, num2, "0"*zero_pad)
@@ -190,7 +194,7 @@ class TM1637:
         self.write(segments)
 
     def temperature(self, num):
-        """Display a temperature integer value -9 through 99 with '*C' symbol.
+        """Display a temperature integer value -9 through 99 with '*C' symbol, right-aligned.
         Values outside of this range show 'lo' for low or 'hi' for high."""
         if num < -9:
             self.show("lo")
@@ -203,7 +207,7 @@ class TM1637:
         self.write([_SEGMENTS[38], _SEGMENTS[12]], pos=2)  # asterisk C
 
     def temperature_decimal(self, num):
-        """Display a temperature decimal value -9.9 through 99.9 with '*' symbol.
+        """Display a temperature decimal value -9.9 through 99.9 with '*' symbol, right-aligned.
         Values outside of this range show 'lo' for low or 'hi' for high."""
         if num < -9.9:
             self.show(" lo")

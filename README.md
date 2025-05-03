@@ -92,11 +92,11 @@ TM1637(clk, dio, *, chip_path="/dev/gpiochip*", brightness=7)
 #### Methods
 
 - `write(segments, pos=0)`: Write raw segments
-- `show(string, sep=False)`: Display a string
+- `show(string, sep=False, fill=" ")`: Display a string
 - `scroll(string, delay=0.25)`: Scroll a string across the display
 - `hex(val)`: Display a hexadecimal value (0x0000 to 0xffff)
-- `number(num)`: Display an integer value (-999 to 9999)
-- `numbers(num1, num2, sep=True)`: Display two integers values (-9 to 99)
+- `number(num, zero_pad=True)`: Display an integer value (-999 to 9999)
+- `numbers(num1, num2, sep=True, zero_pad=True)`: Display two integers values (-9 to 99)
 - `temperature(num)`: Display a temperature integer value
 - `temperature_decimal(num)`: Display a temperature decimal value
 
