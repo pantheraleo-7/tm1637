@@ -1,3 +1,5 @@
+# Authored by: Asadullah Shaikh <github.com/pantheraleo-7>
+
 import glob
 import time
 
