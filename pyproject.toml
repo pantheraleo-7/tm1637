@@ -1,6 +1,6 @@
 [project]
 name = "python-tm1637"
-version = "0.1.6"
+version = "1.0.0"
 description = "Library for TM1637-based LED display modules"
 readme = "README.md"
 requires-python = ">=3.9"

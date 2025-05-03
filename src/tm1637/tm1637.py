@@ -172,9 +172,9 @@ class TM1637:
         self.write(segments)
 
     def number(self, num):
-        """Display an integer value -999 through 9999, right aligned."""
+        """Display an integer value -999 through 9999, left zero padded."""
         num = max(-999, min(num, 9999))
-        string = "{:4d}".format(num)
+        string = "{:04d}".format(num)
         segments = self.encode_string(string)
         self.write(segments)
 
