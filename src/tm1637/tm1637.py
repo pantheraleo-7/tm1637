@@ -102,7 +102,7 @@ class TM1637:
 
     @staticmethod
     def encode_char(char):
-        """Convert a character containing 0-9, A-z, whitespace, hyphen or asterisk
+        """Convert a character (0-9, A-z, whitespace, hyphen or asterisk)
         to a segment."""
         o = ord(char)
         if o == 32:
@@ -122,13 +122,13 @@ class TM1637:
 
     @staticmethod
     def encode_digit(digit):
-        """Convert a character containing 0-9 or a-f to a segment."""
+        """Convert a [hex] digit (0-9 or a-f) to a segment."""
         return _SEGMENTS[digit & 0x0f]
 
     @staticmethod
     def encode_string(string):
-        """Convert a string containing 0-9, A-z, whitespace, hyphen or asterisk
-        to an array of segments, matching the length of the source string."""
+        """Convert a string (containing 0-9, A-z, whitespace, hyphen or asterisk)
+        to an array of segments."""
         segments = bytearray(len(string))
         for i, char in enumerate(string):
             segments[i] = TM1637.encode_char(char)
@@ -150,7 +150,7 @@ class TM1637:
 
     def show(self, string, sep=False, fill=" "):
         """Display a string up to 4 characters long, left-aligned
-        and padded with the given fill character (default: space).
+        using the specified fill character (default: space).
         Optionally toggle the display's separator (default: False)."""
         string = "{:{}<4s}".format(string, fill)[:4]
         segments = self.encode_string(string)
@@ -159,8 +159,8 @@ class TM1637:
         self.write(segments)
 
     def scroll(self, string, delay=0.25):
-        """Scroll a string across the display with the specified delay,
-        given in seconds, between each step (default: 0.25)."""
+        """Scroll a string across the display with the specified delay
+        (in seconds) between each step (default: 0.25)."""
         segments = b"\x00" * 4 + self.encode_string(string) + b"\x00" * 4
         for i in range(len(segments) - (4 - 1)):  # stop at right padding
             self.write(segments[i : i + 4])
@@ -187,7 +187,7 @@ class TM1637:
         Optionally toggle the display's separator (default: True)."""
         num1 = max(-9, min(num1, 99))
         num2 = max(-9, min(num2, 99))
-        string = "{0:{2}2d}{1:{2}2d}".format(num1, num2, "0"*zero_pad)
+        string = "{:{fill}2d}{:{fill}2d}".format(num1, num2, fill="0"*zero_pad)
         segments = self.encode_string(string)
         if sep:
             segments[1] |= TM1637_MSB
@@ -227,10 +227,8 @@ class TM1637Decimal(TM1637):
 
     @staticmethod
     def encode_string(string):
-        """Convert a string to LED segments.
-
-        Convert a string containing 0-9, A-z, whitespace, hyphen, asterisk or period
-        to an array of segments, matching the length of the source string."""
+        """Convert a string (containing 0-9, A-z, whitespace, hyphen, asterisk or period)
+        to an array of segments."""
         segments = bytearray(len(string.replace(".", "")))  # remove decimal point(s)
         prev_char_period = True
         i = 0
