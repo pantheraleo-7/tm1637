@@ -6,21 +6,18 @@ import time
 import gpiod
 from gpiod.line import Direction, Value
 
-
 __all__ = ["TM1637", "TM1637Decimal"]
 
-TM1637_CMD1 = 0x40  # 0x40 data command
-TM1637_CMD2 = 0xc0  # 0xC0 address command
-TM1637_CMD3 = 0x80  # 0x80 display control command
-TM1637_DELAY = 5e-6  # 5us delay between a pulse
-TM1637_DSP_ON = 0x08  # 0x08 display on
-TM1637_MSB = 0x80  # MSB is the decimal point or colon depending on the display
-
-# 0-9, A-z, whitespace, hyphen, asterisk
-_SEGMENTS = (
-    b"\x3F\x06\x5B\x4F\x66\x6D\x7D\x07\x7F\x6F\x77\x7C\x39"
-    b"\x5E\x79\x71\x3D\x76\x06\x1E\x76\x38\x55\x54\x3F\x73"
-    b"\x67\x50\x6D\x78\x3E\x1C\x2A\x76\x6E\x5B\x00\x40\x63"
+_CMD1 = 0x40  # data command
+_CMD2 = 0xC0  # address command
+_CMD3 = 0x80  # display control command
+_DELAY = 5e-6  # 5us delay
+_DSP_ON = 0x08  # display on
+_MSB = 0x80  # MSB is decimal point or colon depending on the display
+_SEGMENTS = (  # 0-9, A-z, whitespace, hyphen, asterisk
+    b"\x3f\x06\x5b\x4f\x66\x6d\x7d\x07\x7f\x6f\x77\x7c\x39"
+    b"\x5e\x79\x71\x3d\x76\x06\x1e\x76\x38\x55\x54\x3f\x73"
+    b"\x67\x50\x6d\x78\x3e\x1c\x2a\x76\x6e\x5b\x00\x40\x63"
 )
 
 
@@ -65,24 +62,22 @@ class TM1637:
         for i in range(8):
             self._lines.set_value(self.clk, Value.INACTIVE)
             self._lines.set_value(self.dio, Value((byte >> i) & 1))
-            time.sleep(TM1637_DELAY)
+            time.sleep(_DELAY)
             self._lines.set_value(self.clk, Value.ACTIVE)
-            time.sleep(TM1637_DELAY)
+            time.sleep(_DELAY)
 
         self._lines.set_value(self.clk, Value.INACTIVE)
         self._lines.set_value(self.clk, Value.ACTIVE)
-        time.sleep(TM1637_DELAY)
+        time.sleep(_DELAY)
 
-    def _write_data_cmd(self):
-        # automatic address increment, normal mode
+    def _write_data_cmd(self):  # automatic address increment, normal mode
         self._start()
-        self._write_byte(TM1637_CMD1)
+        self._write_byte(_CMD1)
         self._stop()
 
-    def _write_dsp_ctrl(self):
-        # display on, set brightness
+    def _write_dsp_ctrl(self):  # display on, set brightness
         self._start()
-        self._write_byte(TM1637_CMD3 | TM1637_DSP_ON | self._brightness)
+        self._write_byte(_CMD3 | _DSP_ON | self._brightness)
         self._stop()
 
     @property
@@ -94,7 +89,7 @@ class TM1637:
     def brightness(self, val):
         """Set the display brightness, between 0-7."""
         if val not in range(8):
-            raise ValueError(f"Brightness '{val}' is out of range")
+            raise ValueError(f"brightness '{val}' is out of range")
 
         self._brightness = val
         self._write_data_cmd()
@@ -123,7 +118,7 @@ class TM1637:
     @staticmethod
     def encode_digit(digit):
         """Convert a [hex] digit (0-9 or a-f) to a segment."""
-        return _SEGMENTS[digit & 0x0f]
+        return _SEGMENTS[digit & 0x0F]
 
     @staticmethod
     def encode_string(string):
@@ -142,7 +137,7 @@ class TM1637:
 
         self._write_data_cmd()
         self._start()
-        self._write_byte(TM1637_CMD2 | pos)
+        self._write_byte(_CMD2 | pos)
         for seg in segments:
             self._write_byte(seg)
         self._stop()
@@ -155,7 +150,7 @@ class TM1637:
         string = "{:{}<4s}".format(string, fill)[:4]
         segments = self.encode_string(string)
         if sep:
-            segments[1] |= TM1637_MSB
+            segments[1] |= _MSB
         self.write(segments)
 
     def scroll(self, string, delay=0.25):
@@ -167,9 +162,9 @@ class TM1637:
             time.sleep(delay)
 
     def hex(self, val):
-        """Display a hex value 0x0000 through 0xffff, right-aligned
+        """Display a hex value 0x0000 through 0xFFFF, right-aligned
         with zero-padding."""
-        string = "{:04x}".format(val & 0xffff)
+        string = "{:04x}".format(val & 0xFFFF)
         segments = self.encode_string(string)
         self.write(segments)
 
@@ -177,7 +172,7 @@ class TM1637:
         """Display an integer value -999 through 9999, right-aligned
         with optional zero-padding (default: True)."""
         num = max(-999, min(num, 9999))
-        string = "{:{}4d}".format(num, "0"*zero_pad)
+        string = "{:{}4d}".format(num, "0" * zero_pad)
         segments = self.encode_string(string)
         self.write(segments)
 
@@ -187,10 +182,10 @@ class TM1637:
         Optionally toggle the display's separator (default: True)."""
         num1 = max(-9, min(num1, 99))
         num2 = max(-9, min(num2, 99))
-        string = "{:{fill}2d}{:{fill}2d}".format(num1, num2, fill="0"*zero_pad)
+        string = "{:{fill}2d}{:{fill}2d}".format(num1, num2, fill="0" * zero_pad)
         segments = self.encode_string(string)
         if sep:
-            segments[1] |= TM1637_MSB
+            segments[1] |= _MSB
         self.write(segments)
 
     def temperature(self, num):
@@ -214,9 +209,9 @@ class TM1637:
         elif num > 99.9:
             self.show(" hi")
         else:
-            string = "{:4.1f}".format(num).replace(".", "")  # remove decimal point
+            string = "{:4.1f}".format(num).replace(".", "")
             segments = self.encode_string(string)
-            segments[1] |= TM1637_MSB
+            segments[1] |= _MSB
             self.write(segments)
         self.write([_SEGMENTS[38]], pos=3)  # asterisk
 
@@ -229,12 +224,12 @@ class TM1637Decimal(TM1637):
     def encode_string(string):
         """Convert a string (containing 0-9, A-z, whitespace, hyphen, asterisk or period)
         to an array of segments."""
-        segments = bytearray(len(string.replace(".", "")))  # remove decimal point(s)
+        segments = bytearray(len(string.replace(".", "")))
         prev_char_period = True
         i = 0
         for char in string:
             if char == "." and not prev_char_period:
-                segments[i - 1] |= TM1637_MSB
+                segments[i - 1] |= _MSB
                 prev_char_period = True
             else:
                 segments[i] = TM1637.encode_char(char)

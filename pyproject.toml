@@ -1,32 +1,34 @@
 [project]
 name = "python-tm1637"
-version = "1.1.1"
-description = "Library for TM1637-based LED display modules"
+version = "1.1.2"
+description = "Modern, gpiod-based library for TM1637-based LED display modules"
 readme = "README.md"
-requires-python = ">=3.9"
-license-files = [ "LICENSE" ]
-authors = [ { name = "Asadullah Shaikh" } ]
-keywords = [ "tm1637", "gpiod", "7", "segment", "led", "display" ]
+license-files = ["LICENSE"]
+authors = [
+    { name = "Asadullah Shaikh" }
+]
+urls = { Repository = "https://github.com/pantheraleo-7/tm1637" }
+keywords = ["7", "segment", "led", "display", "raspberry", "pi", "raspberrypi", "rpi", "5"]
 classifiers = [
-    "Intended Audience :: Education",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
-    "Topic :: Education",
-    "Topic :: System :: Hardware :: Hardware Drivers",
-    "Topic :: Software Development :: Embedded Systems",
-    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Development Status :: 5 - Production/Stable",
+    "Topic :: Education",
+    "Topic :: Software Development :: Embedded Systems",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Hardware :: Hardware Drivers",
 ]
-urls = { homepage = "https://github.com/pantheraleo-7/tm1637" }
+requires-python = ">=3.9"
 dependencies = [
     "gpiod>=2.3.0",
 ]
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.9.9,<0.10.0"]
+build-backend = "uv_build"
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/tm1637"]
+[tool.uv.build-backend]
+module-name = "tm1637"

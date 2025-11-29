@@ -1,0 +1,46 @@
+version = 1
+revision = 3
+requires-python = ">=3.9"
+
+[[package]]
+name = "gpiod"
+version = "2.4.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/0c/dc/5a6bd309345bd9cfa7e098174ab7e65367e408539b6c1998e4f267c673cd/gpiod-2.4.0.tar.gz", hash = "sha256:9243a1a59d084ec749d1df4a1e2f238ffb9d94515b0d9f5335460175143c3aa1", size = 58180, upload-time = "2025-10-24T14:58:08.584Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/26/c0/2ef8d124e9a9d031ca73b867585be5699507f5d85b156a50b8e3fef2daea/gpiod-2.4.0-cp310-cp310-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:2a50619f0bc14179469172cd5f72fa9fc868928c1d25d823252e1801bcfb58d8", size = 102697, upload-time = "2025-10-24T14:57:38.365Z" },
+    { url = "https://files.pythonhosted.org/packages/8a/1f/768718842092f7ee1070fdfb5dadf6cfe6aad8b0610792da9df6793bef4e/gpiod-2.4.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:1f5c53f95f1ddbc10a849c991e599fc0bf9fd529aff48aaa2ce3ebf65315ab35", size = 102147, upload-time = "2025-10-24T14:57:39.592Z" },
+    { url = "https://files.pythonhosted.org/packages/1c/9e/a4b21dbd56c943fed57b06298fe3f13ce8de6559a06906881cbc925abb77/gpiod-2.4.0-cp310-cp310-musllinux_1_2_aarch64.whl", hash = "sha256:cfc0b31587d05ac9709f52da926f01164d14588cafa47797917914ac17e14fa0", size = 100672, upload-time = "2025-10-24T14:57:40.68Z" },
+    { url = "https://files.pythonhosted.org/packages/69/72/a2a55be50263e624d8f7c4dfdade09009d380230633c7e76cea9b807d436/gpiod-2.4.0-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:97c05b100fb1c1744371c7f58f70b042c7e3fd072508ada489709d7d61b7713b", size = 100363, upload-time = "2025-10-24T14:57:43.275Z" },
+    { url = "https://files.pythonhosted.org/packages/40/39/cad2ec554e16b6ac9e4a5650a11265be08b512f439b0a7cd14836751a7cb/gpiod-2.4.0-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:a77ca84b02a6ae36e5a7391cf466d1d2f1f99313e4850a5a3a31f708e056e89a", size = 104246, upload-time = "2025-10-24T14:57:44.373Z" },
+    { url = "https://files.pythonhosted.org/packages/66/0d/94e0c66ff541961970b3c57a989ebdf3251d83a920e780ad3b8aac7ec5cf/gpiod-2.4.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:a60cce6f52fcbbc746b6b1fe7a322d6dc636e29107fa7aabbe9549232a7c2a91", size = 103878, upload-time = "2025-10-24T14:57:45.494Z" },
+    { url = "https://files.pythonhosted.org/packages/5c/d2/1be24a2667104f0cadbc96ef593e47e66f744e32d4db7c38a42fd4b2ff3c/gpiod-2.4.0-cp311-cp311-musllinux_1_2_aarch64.whl", hash = "sha256:de6e4ff28f80c95e6beb66a2a38a38c62375e2d182193560b81f2c48ea411280", size = 102443, upload-time = "2025-10-24T14:57:46.459Z" },
+    { url = "https://files.pythonhosted.org/packages/f9/61/4539c5148675383af615506eafcc4dc0da185268b22e60e17aca6affc2ab/gpiod-2.4.0-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:4a1763c121afe05d4adaecd2fcebf7f32478e4f1c7c16b55d0789d518c49cacc", size = 102101, upload-time = "2025-10-24T14:57:47.452Z" },
+    { url = "https://files.pythonhosted.org/packages/c3/ab/c4ca0163eafb6eb9f78dbb4b6fc335c099f96040eedb1dd3c774378e754a/gpiod-2.4.0-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:7433f9651baaf7ce8cc1269ee36eb981546cb6a078bc654fd1e51d78a8dd12ce", size = 104013, upload-time = "2025-10-24T14:57:48.517Z" },
+    { url = "https://files.pythonhosted.org/packages/3b/0b/fb7e3773b2ff5d4c9a40593237f6eb0d8eb3935c0e9dbc6e4c1a6e9d1275/gpiod-2.4.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:d6c373bf64354ee5270eca3a08551aee6bc1b450de94abeb577a33f35c60ea8e", size = 103698, upload-time = "2025-10-24T14:57:49.6Z" },
+    { url = "https://files.pythonhosted.org/packages/ce/a1/5e7c436502cedfd2058dbb4f272b7464a551a8701ff4b6d07e7eda2cc760/gpiod-2.4.0-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:d6bfeeff9379e5cb7a0b586a3a4b89a0b2d0cc2062e5506e1911f9971c0f0eb6", size = 102520, upload-time = "2025-10-24T14:57:51.003Z" },
+    { url = "https://files.pythonhosted.org/packages/53/b9/dea83d11f704e740906110f40231a24a68a1615f08f051f0d12cfcf9a607/gpiod-2.4.0-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:9fe625acfdd3da5ce766098d1c3f2b8300d9a032cd86a3818d54bf4d1826db80", size = 102338, upload-time = "2025-10-24T14:57:52.145Z" },
+    { url = "https://files.pythonhosted.org/packages/31/5c/2fdbddb0e6adf1de37e72ad9e27dba37b8b51db587475cb0e17fb5988c59/gpiod-2.4.0-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:dec7722e8d861cab36c3e789acd90ed7f692d7480a4f2cdd39e1fedbaf87395a", size = 104146, upload-time = "2025-10-24T14:57:53.443Z" },
+    { url = "https://files.pythonhosted.org/packages/cc/5a/5347749831d29c821a7890a08baa2b7ab99df37ee5a9f233c42da00a75d5/gpiod-2.4.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:7352d0a29c2be03faa6e95ba3d02b045e4b14882bb8fc92ec8316272294acc44", size = 103794, upload-time = "2025-10-24T14:57:54.501Z" },
+    { url = "https://files.pythonhosted.org/packages/43/8c/d8ea7fa1c5432b1efc4903f9619c0d3f7aaafa32eaf1c932c60da6efcf17/gpiod-2.4.0-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:34a77bb0f5bf3d8174877b817cfedb839bacc965a7c7149f77b068bbe7c282c1", size = 102643, upload-time = "2025-10-24T14:57:56.726Z" },
+    { url = "https://files.pythonhosted.org/packages/61/5e/b920d1c6549259ff64a2348a2a1f28b08eb7c26c6c8f0aa64f96cdb3aeb4/gpiod-2.4.0-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:03720d249191e3aeed66b9c178a65ec2f289e7a5d9ae4d35ec09f39ee27fd8c0", size = 102524, upload-time = "2025-10-24T14:57:57.821Z" },
+    { url = "https://files.pythonhosted.org/packages/23/08/cb17d4c4876954ffc3560e8fbe71528d46deda0f1d6e2c1a65824a6073e4/gpiod-2.4.0-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:75c9ac86275c3cb14779f0fb6e671067ae0d9c20e41b6f18c9487db6897fdd86", size = 104748, upload-time = "2025-10-24T14:57:58.921Z" },
+    { url = "https://files.pythonhosted.org/packages/87/2d/793d6b9f5f126d16bd12ba933fde50b2b2614ace70b8f328291369754acd/gpiod-2.4.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:6eb53c3052b5012bb87e67359254851dad8a2e3134839d871520fdfee3897a0f", size = 104431, upload-time = "2025-10-24T14:57:59.981Z" },
+    { url = "https://files.pythonhosted.org/packages/b5/a5/72876d06e151bb337862f7635765d21cab2a2c2452cc36d670ffb7cdd6a2/gpiod-2.4.0-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:ea9e6ff91fc42e456cee1ba9bf955d9b787a29955f645a7bdacbccd243d7b191", size = 103006, upload-time = "2025-10-24T14:58:00.955Z" },
+    { url = "https://files.pythonhosted.org/packages/be/62/385fc9a61e5ab67cf4533fe14431600a29a54f565784170f8d90731d7947/gpiod-2.4.0-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:d5b321d34f475eb7f8359be2c4181c5098012fb34c92c948f17744704bd66a77", size = 102910, upload-time = "2025-10-24T14:58:02.066Z" },
+    { url = "https://files.pythonhosted.org/packages/f9/9f/486c0d55a8c2e649ad5da633b80556bc17bd25f55d2517912b2f57b8e4c8/gpiod-2.4.0-cp39-cp39-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:509db017383511d6e6e8bb280bd95c713200148af4d1e9d6437f39e51f7954cf", size = 101989, upload-time = "2025-10-24T14:58:03.514Z" },
+    { url = "https://files.pythonhosted.org/packages/09/94/f3ab00c55a470179a466ff134628993c2733b4e4ea04aa9f7c5de9b2b874/gpiod-2.4.0-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:961caf463f9e467262bdef603a6aff7f5dfcd3560550cac7002a9d7ac3270888", size = 101533, upload-time = "2025-10-24T14:58:05.165Z" },
+    { url = "https://files.pythonhosted.org/packages/98/7b/e183eda7347f440bb147d0788f3d286ff531b0f37e2c6596d14f30e9c5a7/gpiod-2.4.0-cp39-cp39-musllinux_1_2_aarch64.whl", hash = "sha256:99e8a21b5568193ad791a80eccd2b851195ab45e748f341ebaf320fd0871a946", size = 99929, upload-time = "2025-10-24T14:58:06.367Z" },
+    { url = "https://files.pythonhosted.org/packages/5f/c8/9feecaefe7e4cb83ad540169f2480e82b7914325e9927bfbcbf183ba8b82/gpiod-2.4.0-cp39-cp39-musllinux_1_2_x86_64.whl", hash = "sha256:2fde6354cbebb374a6b6fc88260d43696c4635e41616fe4be9ab51886ca0397e", size = 99720, upload-time = "2025-10-24T14:58:07.508Z" },
+]
+
+[[package]]
+name = "python-tm1637"
+version = "1.1.2"
+source = { editable = "." }
+dependencies = [
+    { name = "gpiod" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "gpiod", specifier = ">=2.3.0" }]
