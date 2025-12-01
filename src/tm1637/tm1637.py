@@ -41,7 +41,7 @@ class TM1637:
                 self.brightness = brightness
                 break
         else:
-            raise ValueError("No valid GPIO chip device found")
+            raise RuntimeError("failed to request the GPIO lines")
 
     def __del__(self):
         self._lines.release()
@@ -113,7 +113,7 @@ class TM1637:
         elif 97 <= o <= 122:
             return _SEGMENTS[o - 87]  # a-z
         else:
-            raise ValueError(f"Character '{char}' ({o}) is out of range")
+            raise ValueError(f"character '{char}' is out of range")
 
     @staticmethod
     def encode_digit(digit):
@@ -133,7 +133,7 @@ class TM1637:
         """Display up to 4 segments, moving right from the specified position
         (default: 0)."""
         if pos not in range(4):
-            raise ValueError(f"Position {pos} is out of range")
+            raise ValueError(f"position '{pos}' is out of range")
 
         self._write_data_cmd()
         self._start()
@@ -162,7 +162,7 @@ class TM1637:
             time.sleep(delay)
 
     def hex(self, val):
-        """Display a hex value 0x0000 through 0xFFFF, right-aligned
+        """Display a hex value 0x0000 through 0xffff, right-aligned
         with zero-padding."""
         string = "{:04x}".format(val & 0xFFFF)
         segments = self.encode_string(string)

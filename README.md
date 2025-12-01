@@ -3,8 +3,8 @@ TM1637 is a Python library for interfacing with TM1637-based 4-digit 7-segment L
 # Features
 
 - Hardware-agnostic implementation using the modern Linux GPIO character device interface
-- Automatic detection of the available GPIO chip device for the given clock and data I/O lines
-- Uses the official [`libgpiod`](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/about/) Python bindings: [`gpiod v2`](https://pypi.org/project/gpiod/)
+- Automatic detection of the available GPIO chip device for the given clock and data GPIO lines
+- Uses the official [`libgpiod`](https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/about/) Python bindings: [`gpiod v2+`](https://pypi.org/project/gpiod/)
 - Text display
 - Scrolling text
 - Hexadecimal display (0x0000 to 0xffff)
@@ -61,6 +61,7 @@ TM1637(clk, dio, *, chip_path="/dev/gpiochip*", brightness=7)
 - `chip_path`: Path to the GPIO chip device (defaults to auto-detection)
 
 ### Properties
+
 - `brightness`: Get or set the display brightness
 - `chip_path`: Get the path to GPIO chip device in use
 - `clk`: Get the GPIO pin number of the clock line passed to constructor
