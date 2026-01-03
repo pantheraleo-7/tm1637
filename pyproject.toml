@@ -1,6 +1,6 @@
 [project]
 name = "python-tm1637"
-version = "1.1.4"
+version = "1.1.5"
 description = "Modern, gpiod-based library for TM1637-based LED display modules"
 readme = "README.md"
 license = "MIT"
@@ -8,8 +8,8 @@ license-files = ["LICENSE"]
 authors = [
     { name = "Asadullah Shaikh" }
 ]
-urls = { Repository = "https://github.com/pantheraleo-7/tm1637" }
-keywords = ["7", "segment", "led", "display", "raspberry", "pi", "raspberrypi", "rpi", "5"]
+urls = { Repository = "https://github.com/pantheraleo-7/python-tm1637" }
+keywords = ["7", "segment", "led", "display", "raspberry", "pi", "raspberrypi", "rpi", "5", "gpiod"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",

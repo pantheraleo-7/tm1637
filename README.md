@@ -1,4 +1,4 @@
-TM1637 is a Python library for interfacing with TM1637-based 4-digit 7-segment LED display modules, using the Linux GPIO character device interface (`gpiod`).
+`python-tm1637` is a library for interfacing with TM1637-based 4-digit 7-segment LED display modules, using the Linux GPIO character device interface (`gpiod`).
 
 # Features
 

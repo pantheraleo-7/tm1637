@@ -36,7 +36,7 @@ wheels = [
 
 [[package]]
 name = "python-tm1637"
-version = "1.1.4"
+version = "1.1.5"
 source = { editable = "." }
 dependencies = [
     { name = "gpiod" },
